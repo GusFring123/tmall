@@ -29,5 +29,22 @@ public class User {
         this.password = password;
     }
 
-    //获取用户n
+    //获取用户匿名名称
+    public String getAnonymousName() {
+        if (null == name) {
+            return null;
+        }
+        if (name.length() <=1) {
+            return "*";
+        }
+        if (name.length() == 2) {
+            return name.substring(  0,1) + "*";
+        }
+
+        char[] chars = name.toCharArray();
+        for (int i=1; i<chars.length-1;i++) {
+            chars[i] = '*';
+        }
+        return new String(chars);
+    }
 }
