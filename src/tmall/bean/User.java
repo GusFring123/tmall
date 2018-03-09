@@ -34,15 +34,15 @@ public class User {
         if (null == name) {
             return null;
         }
-        if (name.length() <=1) {
+        if (name.length() <= 1) {
             return "*";
         }
         if (name.length() == 2) {
-            return name.substring(  0,1) + "*";
+            return name.substring(0, 1) + "*";
         }
 
         char[] chars = name.toCharArray();
-        for (int i=1; i<chars.length-1;i++) {
+        for (int i = 1; i < chars.length - 1; i++) {
             chars[i] = '*';
         }
         return new String(chars);
