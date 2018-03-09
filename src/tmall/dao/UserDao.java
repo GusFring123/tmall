@@ -1,6 +1,5 @@
 package tmall.dao;
 
-import org.omg.PortableInterceptor.USER_EXCEPTION;
 import tmall.bean.User;
 import tmall.util.DBUtil;
 
@@ -43,7 +42,7 @@ public class UserDao {
     /**
      * 增加User 添加后可获得主键id
      *
-     * @param user
+     * @param user User
      */
     public void add(User user) {
         String sql = "insert into user values(null, ?, ?)";
@@ -88,11 +87,12 @@ public class UserDao {
     /**
      * 删除User
      *
-     * @param id id
+     * @param id int
      */
     public void delete(int id) {
-        try (Connection connection = DBUtil.getConnection();
-             Statement statement = connection.createStatement();
+        try (
+                Connection connection = DBUtil.getConnection();
+                Statement statement = connection.createStatement();
         ) {
             String sql = "delete from user where id = " + id;
             statement.execute(sql);
@@ -104,7 +104,7 @@ public class UserDao {
     /**
      * 查询User
      *
-     * @param id id
+     * @param id int
      * @return User
      */
     public User get(int id) {

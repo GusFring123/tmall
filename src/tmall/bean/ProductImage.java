@@ -17,7 +17,7 @@ public class ProductImage {
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id = this.id;
     }
 
     public Product getProduct() {
