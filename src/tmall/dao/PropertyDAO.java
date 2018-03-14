@@ -15,7 +15,7 @@ import java.util.List;
  * @Version: 1.0
  */
 
-public class PropertyDao {
+public class PropertyDAO {
 
     /**
      * 根据cid获取总数
@@ -120,7 +120,7 @@ public class PropertyDao {
                 property = new Property();
                 property.setId(id);
                 property.setName(resultSet.getString("name"));
-                Category category = new CategoryDao().get(resultSet.getInt("cid"));
+                Category category = new CategoryDAO().get(resultSet.getInt("cid"));
                 property.setCategory(category);
             }
         } catch (SQLException e) {
@@ -152,7 +152,7 @@ public class PropertyDao {
                 Property property = new Property();
                 property.setId(resultSet.getInt("id"));
                 property.setName(resultSet.getString("name"));
-                property.setCategory(new CategoryDao().get(cid));
+                property.setCategory(new CategoryDAO().get(cid));
                 properties.add(property);
             }
         } catch (SQLException e) {

@@ -14,7 +14,7 @@ import java.util.List;
  * @Version: 1.0
  */
 
-public class CategoryDao {
+public class CategoryDAO {
     /**
      * 获取分类总数
      *

@@ -14,7 +14,7 @@ import java.util.List;
  * @Version: 1.0
  */
 
-public class UserDao {
+public class UserDAO {
     /**
      * 获取总数
      *
