@@ -17,7 +17,11 @@ import java.util.List;
  */
 
 public class PropertyValueDAO {
-
+    /**
+     * 获取PropertyValue总数
+     *
+     * @return
+     */
     public int getTotal() {
         int total = 0;
         try (
@@ -35,6 +39,11 @@ public class PropertyValueDAO {
         return total;
     }
 
+    /**
+     * 增加PropertyValue
+     *
+     * @param propertyValue
+     */
     public void add(PropertyValue propertyValue) {
         String sql = "insert into properyvalue VALUES (NULL, ?, ?, ?)";
         try (
@@ -50,6 +59,11 @@ public class PropertyValueDAO {
         }
     }
 
+    /**
+     * 删除PropertyValue
+     *
+     * @param id
+     */
     public void delete(int id) {
         try (
                 Connection connection = DBUtil.getConnection();
@@ -62,6 +76,11 @@ public class PropertyValueDAO {
         }
     }
 
+    /**
+     * 更新PropertyValue
+     *
+     * @param propertyValue
+     */
     public void update(PropertyValue propertyValue) {
         String sql = "UPDATE propertyvalue SET pid = ?, ptid = ?, value = ? WHERE id = ?";
         try (
@@ -78,6 +97,12 @@ public class PropertyValueDAO {
         }
     }
 
+    /**
+     * 获取PropertyValue
+     *
+     * @param id
+     * @return
+     */
     public PropertyValue get(int id) {
         PropertyValue propertyValue = null;
         try (
@@ -98,6 +123,13 @@ public class PropertyValueDAO {
         return propertyValue;
     }
 
+    /**
+     * 获取PropertyValue
+     *
+     * @param pid
+     * @param ptid
+     * @return
+     */
     public PropertyValue get(int pid, int ptid) {
         PropertyValue propertyValue = null;
         String sql = "SELECT * FROM propertyvalue WHERE pid = ? AND ptid = ?";
@@ -121,10 +153,22 @@ public class PropertyValueDAO {
         return propertyValue;
     }
 
+    /**
+     * 获取PropertyValue列表
+     *
+     * @return
+     */
     public List<PropertyValue> list() {
         return list(0, Short.MAX_VALUE);
     }
 
+    /**
+     * 获取PropertyValue列表
+     *
+     * @param start
+     * @param count
+     * @return
+     */
     public List<PropertyValue> list(int start, int count) {
         List<PropertyValue> propertyValues = new ArrayList<>();
         String sql = "SELECT * FROM propertyvalue ORDER BY id DESC limit ?, ?";
@@ -149,6 +193,12 @@ public class PropertyValueDAO {
         return propertyValues;
     }
 
+    /**
+     * 获取PropertyValue列表
+     *
+     * @param pid
+     * @return
+     */
     public List<PropertyValue> list(int pid) {
         List<PropertyValue> beans = new ArrayList<PropertyValue>();
         String sql = "select * from PropertyValue where pid = ? order by ptid desc";
@@ -175,6 +225,11 @@ public class PropertyValueDAO {
         return beans;
     }
 
+    /**
+     * 初始化PropertyValue
+     *
+     * @param product
+     */
     public void init(Product product) {
         List<Property> properties = new PropertyDAO().list(product.getCategory().getId());
         for (Property property : properties) {

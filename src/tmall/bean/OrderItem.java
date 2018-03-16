@@ -12,6 +12,7 @@ public class OrderItem {
     private Product product;
     private User user;
     private int id;
+    private Order order;
 
     public int getNumber() {
         return number;
@@ -43,5 +44,13 @@ public class OrderItem {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }

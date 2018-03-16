@@ -41,6 +41,11 @@ public class ProductImageDAO {
         return total;
     }
 
+    /**
+     * 增加ProductImage
+     *
+     * @param productImage
+     */
     public void add(ProductImage productImage) {
         String sql = "insert into productimage values(null, ?, ?)";
         try (
@@ -60,10 +65,20 @@ public class ProductImageDAO {
         }
     }
 
+    /**
+     * 更新ProductImage
+     *
+     * @param productImage
+     */
     public void update(ProductImage productImage) {
 
     }
 
+    /**
+     * 删除ProductImage
+     *
+     * @param id
+     */
     public void delete(int id) {
         try (
                 Connection connection = DBUtil.getConnection();
@@ -76,6 +91,12 @@ public class ProductImageDAO {
         }
     }
 
+    /**
+     * 获取ProductImage
+     *
+     * @param id
+     * @return
+     */
     public ProductImage get(int id) {
         ProductImage productImage = null;
         try (
@@ -96,6 +117,15 @@ public class ProductImageDAO {
         return productImage;
     }
 
+    /**
+     * 获取ProductImage列表
+     *
+     * @param product
+     * @param type
+     * @param start
+     * @param count
+     * @return
+     */
     public List<ProductImage> list(Product product, String type, int start, int count) {
         List<ProductImage> productImages = new ArrayList<>();
         String sql = "SELECT * FROM productimage WHERE pid = ? AND type = ? ORDER BY id DESC limit ?, ?";
@@ -121,6 +151,13 @@ public class ProductImageDAO {
         return productImages;
     }
 
+    /**
+     * 获取ProductImage列表
+     *
+     * @param product
+     * @param type
+     * @return
+     */
     public List<ProductImage> list(Product product, String type) {
         return list(product, type, 0, Short.MAX_VALUE);
     }

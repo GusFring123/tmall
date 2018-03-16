@@ -17,7 +17,11 @@ import java.util.List;
  */
 
 public class ReviewDAO {
-
+    /**
+     * 获取Review总数
+     *
+     * @return
+     */
     public int getTotal() {
         int total = 0;
         try (
@@ -35,6 +39,12 @@ public class ReviewDAO {
         return total;
     }
 
+    /**
+     * 根据pid获取Review总数
+     *
+     * @param pid
+     * @return
+     */
     public int getTotal(int pid) {
         int total = 0;
         try (
@@ -51,32 +61,12 @@ public class ReviewDAO {
         }
         return total;
     }
-    /*
-    String sql = "";
-        try (
-                Connection connection = DBUtil.getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement(sql);
-                ){
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-try (
-                Connection connection = DBUtil.getConnection();
-                Statement statement = connection.createStatement();
-        ) {
-            String sql = "";
-            ResultSet resultSet = statement.executeQuery(sql);
-            while (resultSet.next()) {
-
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-    */
-
+    /**
+     * 增加Review
+     *
+     * @param review
+     */
     public void add(Review review) {
         String sql = "INSERT INTO  review VALUES (NULL, ?, ?, ?, ?)";
         try (
@@ -97,6 +87,11 @@ try (
         }
     }
 
+    /**
+     * 更新Review
+     *
+     * @param review
+     */
     public void update(Review review) {
         String sql = "UPDATE review SET content = ?,  uid = ?, pid = ? ,createdate = ? WHERE id = ?";
         try (
@@ -115,6 +110,11 @@ try (
         }
     }
 
+    /**
+     * 删除Review
+     *
+     * @param id
+     */
     public void delete(int id) {
         try (
                 Connection connection = DBUtil.getConnection();
@@ -127,6 +127,12 @@ try (
         }
     }
 
+    /**
+     * 获取Review
+     *
+     * @param id
+     * @return
+     */
     public Review get(int id) {
         Review review = null;
         try (
@@ -150,6 +156,14 @@ try (
         return review;
     }
 
+    /**
+     * 获取Review列表
+     *
+     * @param pid
+     * @param start
+     * @param count
+     * @return
+     */
     public List<Review> list(int pid, int start, int count) {
         List<Review> reviews = new ArrayList<>();
         String sql = "SELECT * FROM review WHERE pid = ? ORDER BY id DESC limit ?, ?";
@@ -177,6 +191,12 @@ try (
         return reviews;
     }
 
+    /**
+     * 获取Review列表
+     *
+     * @param pid
+     * @return
+     */
     public List<Review> list(int pid) {
         return list(pid, 0, Short.MAX_VALUE);
     }
