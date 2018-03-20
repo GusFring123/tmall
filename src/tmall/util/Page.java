@@ -49,6 +49,10 @@ public class Page {
         return start != getLast();
     }
 
+    public boolean isHasPrevious() {
+        return start != 0;
+    }
+
     public int getStart() {
         return start;
     }
