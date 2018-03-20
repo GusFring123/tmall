@@ -6,7 +6,6 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import tmall.dao.*;
 import tmall.util.Page;
 
-import javax.jws.WebService;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
