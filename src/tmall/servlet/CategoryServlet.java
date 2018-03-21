@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -45,7 +47,7 @@ public class CategoryServlet extends BaseBackServlet {
                     }
                     fileOutputStream.flush();
                     //把文件保存成jpg格式
-                    
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -74,6 +76,13 @@ public class CategoryServlet extends BaseBackServlet {
 
     @Override
     public String list(HttpServletRequest request, HttpServletResponse response, Page page) {
-        return null;
+        List<Category> categories = categoryDAO.list(page.getStart(), page.getCount());
+        int total = categoryDAO.getTotal();
+        page.setTotal(total);
+
+        request.setAttribute("thecs", categories);
+        request.setAttribute("page", page);
+
+        return "admin/listCategory.jsp";
     }
 }

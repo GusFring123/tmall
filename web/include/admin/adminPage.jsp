@@ -43,7 +43,7 @@
         <li <c:if test="${!page.hasNext}">class="disabled" </c:if>>
             <a href="?page.start=${page.last}${page.param}" aria-label="Next">
                 <span aria-hidden="true">»</span>
-            </a></li>
-
+            </a>
+        </li>
     </ul>
 </nav>
