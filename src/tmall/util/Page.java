@@ -8,8 +8,11 @@ package tmall.util;
  */
 
 public class Page {
+    //开始数量
     int start;
+    //每页显示数量
     int count;
+    //总量
     int total;
     String param;
 

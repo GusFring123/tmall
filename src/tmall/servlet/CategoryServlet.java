@@ -1,6 +1,5 @@
 package tmall.servlet;
 
-import org.apache.commons.fileupload.FileItem;
 import tmall.bean.Category;
 import tmall.util.Page;
 
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +20,7 @@ import java.util.Map;
  * @Version: 1.0
  */
 
-@WebServlet("/categoryServlet")
+@WebServlet(name = "categoryServlet", urlPatterns = "/categoryServlet")
 public class CategoryServlet extends BaseBackServlet {
 
     @Override

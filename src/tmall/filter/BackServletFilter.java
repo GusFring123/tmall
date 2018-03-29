@@ -26,13 +26,13 @@ public class BackServletFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
-        String contextPath = request.getServletContext().getContextPath();
-        String uri = request.getRequestURI();
+        String contextPath = request.getServletContext().getContextPath();//        /tmall
+        String uri = request.getRequestURI();  //    /tmall/admin_category_add
         uri = StringUtils.remove(uri, contextPath);
 
         if (uri.startsWith("/admin_")) {
-            String servletPath = StringUtils.substringBetween(uri, "_", "_") + "Servlet";
-            String method = StringUtils.substringAfterLast(uri, "_");
+            String servletPath = StringUtils.substringBetween(uri, "_", "_") + "Servlet";  //    category
+            String method = StringUtils.substringAfterLast(uri, "_");    //list
             request.setAttribute("method", method);
             servletRequest.getRequestDispatcher("/" + servletPath).forward(request, response);
             return;

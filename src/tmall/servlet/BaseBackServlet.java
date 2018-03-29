@@ -44,11 +44,12 @@ public abstract class BaseBackServlet extends HttpServlet {
     protected ReviewDAO reviewDAO = new ReviewDAO();
     protected UserDAO userDAO = new UserDAO();
 
-    public void servive(HttpServletRequest request, HttpServletResponse response) {
+    public void service(HttpServletRequest request, HttpServletResponse response) {
         try {
             //获取分页信息
             int start = 0;
             int count = 5;
+            //异常捕捉是考虑到不传参数的时候
             try {
                 start = Integer.parseInt(request.getParameter("page.start"));
             } catch (Exception e) {
@@ -72,6 +73,7 @@ public abstract class BaseBackServlet extends HttpServlet {
             } else if (redirect.startsWith("%")) {
                 response.getWriter().print(redirect.substring(1));
             } else {
+                //服务器端跳转
                 request.getRequestDispatcher(redirect).forward(request, response);
             }
 

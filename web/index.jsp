@@ -11,6 +11,6 @@
     <title>$Title$</title>
   </head>
   <body>
-  $END$2hehe
+  $END$2
   </body>
 </html>
